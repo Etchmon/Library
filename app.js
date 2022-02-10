@@ -1,6 +1,11 @@
 let myLibrary = [];
 
+const formContainer = document.getElementById('form-container');
 const form = document.getElementById('form');
+const addBtn = document.getElementById('add-book');
+
+form.addEventListener('submit', handleSubmit);
+addBtn.addEventListener('click', () => addBook());
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -17,9 +22,14 @@ function handleSubmit(e) {
     const data = new Book(this.title.value, this.author.value, this.pages.value, this.checkbox.value);
     myLibrary.push(data);
     console.log(myLibrary);
+    formContainer.className = 'form-container hide-form';
     displayLibrary();
 
     e.preventDefault();
+}
+
+function addBook() {
+    formContainer.className = 'form-container';
 }
 
 function displayLibrary() {
@@ -47,6 +57,3 @@ function displayLibrary() {
         console.log('hi');
     }
 }
-
-
-form.addEventListener('submit', handleSubmit)
