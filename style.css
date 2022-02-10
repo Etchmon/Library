@@ -12,6 +12,39 @@ body {
   background: linear-gradient(rgba(32, 0, 32, 1), rgba(0, 0, 0, 1));
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  display: grid;
+  grid-template-areas:
+    "nav nav"
+    "main main";
+  grid-template-rows: 20vh 1fr;
+  grid-template-columns: 20vw 1fr;
+}
+
+nav {
+  grid-area: nav;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 8px;
+  padding-left: 2rem;
+}
+
+.add-book {
+  height: 5rem;
+  width: 5rem;
+  margin-right: 3rem;
+  border-radius: 10px;
+  background-color: rgb(95, 241, 95);
+}
+
+#form {
+  display: none;
 }
 
 .display {
