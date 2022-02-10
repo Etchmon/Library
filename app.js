@@ -3,9 +3,18 @@ let myLibrary = [];
 const formContainer = document.getElementById('form-container');
 const form = document.getElementById('form');
 const addBtn = document.getElementById('add-book');
+const closeBtn = document.getElementById('close-btn');
+
+const card = document.createElement("div");
+const cardTitle = document.createElement('h1');
+const cardAuthor = document.createElement('h2');
+const cardPages = document.createElement('span');
+const bookRead = document.createElement('span');
+const removeBtn = document.createElement('button');
 
 form.addEventListener('submit', handleSubmit);
 addBtn.addEventListener('click', () => addBook());
+closeBtn.addEventListener('click', () => formContainer.className = 'form-container hide-form');
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -38,18 +47,12 @@ function removeBook() {
     num = this.parentElement.getAttribute('key');
 
     myLibrary.splice(num);
-    console.log(myLibrary);
     document.getElementById('display').innerHTML = '';
     displayLibrary();
 }
 
 function displayLibrary() {
-    const card = document.createElement("div");
-    const cardTitle = document.createElement('h1');
-    const cardAuthor = document.createElement('h2');
-    const cardPages = document.createElement('span');
-    const bookRead = document.createElement('span');
-    const removeBtn = document.createElement('button');
+
     removeBtn.innerHTML = "x";
     removeBtn.className = "remove-btn";
     removeBtn.addEventListener("click", removeBook);
@@ -68,7 +71,6 @@ function displayLibrary() {
 
         card.setAttribute('class', 'card');
         card.setAttribute('key', [i]);
-        console.log(card.getAttribute('key'));
         card.appendChild(removeBtn);
         card.appendChild(cardTitle);
         card.appendChild(cardAuthor);
@@ -76,8 +78,5 @@ function displayLibrary() {
         card.appendChild(bookRead);
 
         document.getElementById('display').appendChild(card);
-
-
-        console.log('hi');
     }
 }
