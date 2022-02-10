@@ -5,13 +5,6 @@ const form = document.getElementById('form');
 const addBtn = document.getElementById('add-book');
 const closeBtn = document.getElementById('close-btn');
 
-const card = document.createElement("div");
-const cardTitle = document.createElement('h1');
-const cardAuthor = document.createElement('h2');
-const cardPages = document.createElement('span');
-const bookRead = document.createElement('span');
-const removeBtn = document.createElement('button');
-
 form.addEventListener('submit', handleSubmit);
 addBtn.addEventListener('click', () => addBook());
 closeBtn.addEventListener('click', () => formContainer.className = 'form-container hide-form');
@@ -52,6 +45,13 @@ function removeBook() {
 }
 
 function displayLibrary() {
+
+    const card = document.createElement("div");
+    const cardTitle = document.createElement('h1');
+    const cardAuthor = document.createElement('h2');
+    const cardPages = document.createElement('span');
+    const bookRead = document.createElement('span');
+    const removeBtn = document.createElement('button');
 
     removeBtn.innerHTML = "x";
     removeBtn.className = "remove-btn";
