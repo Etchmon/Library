@@ -1,0 +1,31 @@
+html {
+  height: 100%;
+  background: hidden;
+}
+
+html,
+body {
+  color: white;
+}
+body {
+  min-height: 100%;
+  background: linear-gradient(rgba(32, 0, 32, 1), rgba(0, 0, 0, 1));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  padding: 5rem;
+}
+
+.card {
+  border-top: 5px solid lightseagreen;
+  border-radius: 5px;
+  line-height: 2;
+  font-size: 2rem;
+  letter-spacing: 1.2;
+}
