@@ -16,11 +16,36 @@
     <div class="form-container hide-form" id="form-container">
       <form action="#" method="" id="form" class="form">
         <legend>Add New Book</legend>
-        <input type="text" name="title" id="title" placeholder="Title" />
-        <input type="text" name="author" id="author" placeholder="Author" />
-        <input type="text" name="pages" id="pages" placeholder="# of pages" />
-        <label for="checkbox">Finished?</label>
-        <input type="checkbox" name="checkbox" id="checkbox" />
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Title"
+          minlength="1"
+          maxlength="50"
+          required
+          autofocus
+        />
+        <input
+          type="text"
+          name="author"
+          id="author"
+          placeholder="Author"
+          minlength="1"
+          maxlength="50"
+          required
+        />
+        <input
+          type="number"
+          name="pages"
+          id="pages"
+          placeholder="# of pages"
+          required
+        />
+        <div>
+          <label for="checkbox">Check if Finished</label>
+          <input type="checkbox" name="checkbox" id="checkbox" value="yes" />
+        </div>
         <button type="submit">Submit</button>
       </form>
     </div>

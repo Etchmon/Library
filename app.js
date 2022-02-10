@@ -19,17 +19,28 @@ Book.prototype.info = function () {
 }
 
 function handleSubmit(e) {
-    const data = new Book(this.title.value, this.author.value, this.pages.value, this.checkbox.value);
+    const data = new Book(this.title.value, this.author.value, this.pages.value, this.checkbox.checked);
     myLibrary.push(data);
     console.log(myLibrary);
     formContainer.className = 'form-container hide-form';
     displayLibrary();
+    form.reset();
 
     e.preventDefault();
 }
 
+
 function addBook() {
     formContainer.className = 'form-container';
+}
+
+function removeBook() {
+    num = this.parentElement.getAttribute('key');
+
+    myLibrary.splice(num);
+    console.log(myLibrary);
+    document.getElementById('display').innerHTML = '';
+    displayLibrary();
 }
 
 function displayLibrary() {
@@ -38,21 +49,34 @@ function displayLibrary() {
     const cardAuthor = document.createElement('h2');
     const cardPages = document.createElement('span');
     const bookRead = document.createElement('span');
+    const removeBtn = document.createElement('button');
+    removeBtn.innerHTML = "x";
+    removeBtn.className = "remove-btn";
+    removeBtn.addEventListener("click", removeBook);
 
     for (i = 0; i < myLibrary.length; i++) {
 
         cardTitle.innerHTML = myLibrary[i].title;
         cardAuthor.innerHTML = myLibrary[i].author;
         cardPages.innerHTML = myLibrary[i].pages;
-        bookRead.innerHTML = myLibrary[i].read;
+
+        if (myLibrary[i].read == true) {
+            bookRead.innerHTML = 'Finished'
+        } else {
+            bookRead.innerHTML = 'Not Finished'
+        }
 
         card.setAttribute('class', 'card');
+        card.setAttribute('key', [i]);
+        console.log(card.getAttribute('key'));
+        card.appendChild(removeBtn);
         card.appendChild(cardTitle);
         card.appendChild(cardAuthor);
         card.appendChild(cardPages);
         card.appendChild(bookRead);
 
         document.getElementById('display').appendChild(card);
+
 
         console.log('hi');
     }

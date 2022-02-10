@@ -69,6 +69,7 @@ nav {
   flex-direction: column;
   height: 60vh;
   width: 30vw;
+  background-color: black;
   font-size: 1.5rem;
   padding: 5rem;
   gap: 2rem;
@@ -78,10 +79,11 @@ nav {
 .display {
   grid-area: main;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
   padding: 5rem;
+  justify-content: center;
 }
 
 .card {
@@ -90,4 +92,18 @@ nav {
   line-height: 2;
   font-size: 2rem;
   letter-spacing: 1.2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.remove-btn {
+  width: min-content;
+  align-self: end;
+  font-size: 1rem;
+  margin: 1rem;
+  background-color: rgb(255, 0, 0);
+  border: none;
+  border-radius: 5px;
 }
