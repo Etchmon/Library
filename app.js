@@ -44,18 +44,35 @@ function removeBook() {
     displayLibrary();
 }
 
+function updateStatus() {
+    key = this.parentElement.getAttribute('key');
+
+    myLibrary[key].read = !myLibrary[key].read;
+    console.log(myLibrary);
+
+    if (myLibrary[key].read == true) {
+        this.innerHTML = 'Finished'
+    } else {
+        this.innerHTML = 'Not Finished'
+    }
+}
+
 function displayLibrary() {
 
     const card = document.createElement("div");
     const cardTitle = document.createElement('h1');
     const cardAuthor = document.createElement('h2');
     const cardPages = document.createElement('span');
-    const bookRead = document.createElement('span');
+    const bookRead = document.createElement('button');
     const removeBtn = document.createElement('button');
 
     removeBtn.innerHTML = "x";
     removeBtn.className = "remove-btn";
+    bookRead.className = 'status';
+
     removeBtn.addEventListener("click", removeBook);
+    bookRead.addEventListener('click', updateStatus);
+
 
     for (i = 0; i < myLibrary.length; i++) {
 
