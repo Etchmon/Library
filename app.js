@@ -9,15 +9,28 @@ form.addEventListener('submit', handleSubmit);
 addBtn.addEventListener('click', () => addBook());
 closeBtn.addEventListener('click', () => formContainer.className = 'form-container hide-form');
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-};
+// function Book(title, author, pages, read) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+// };
 
-Book.prototype.info = function () {
-    return console.log(`${this.title} by ${this.author}, is ${pages} pages, and has ${read}`);
+// Book.prototype.info = function () {
+//     return console.log(`${this.title} by ${this.author}, is ${pages} pages, and has ${read}`);
+// }
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    info() {
+        console.log(this.title, this.author, this.pages, this.read)
+    }
 }
 
 function handleSubmit(e) {
