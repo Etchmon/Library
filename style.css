@@ -120,3 +120,8 @@ nav {
   border: none;
   border-radius: 5px;
 }
+
+.error {
+  border: 1px solid crimson;
+  box-shadow: 0 0 5px 1px red;
+}

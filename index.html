@@ -14,7 +14,7 @@
       <button type="button" class="add-book" id="add-book">Add Book</button>
     </nav>
     <div class="form-container hide-form" id="form-container">
-      <form action="#" method="" id="form" class="form">
+      <form action="#" method="" id="form" class="form" novalidate>
         <button type="button" class="remove-btn" id="close-btn">x</button>
         <legend>Add New Book</legend>
         <input
@@ -22,10 +22,10 @@
           name="title"
           id="title"
           placeholder="Title"
-          minlength="1"
+          minlength="2"
           maxlength="50"
-          required
           autofocus
+          required
         />
         <input
           type="text"

@@ -5,7 +5,7 @@ const form = document.getElementById('form');
 const addBtn = document.getElementById('add-book');
 const closeBtn = document.getElementById('close-btn');
 
-form.addEventListener('submit', handleSubmit);
+form.addEventListener('submit', validateForm);
 addBtn.addEventListener('click', () => addBook());
 closeBtn.addEventListener('click', () => formContainer.className = 'form-container hide-form');
 
@@ -34,14 +34,38 @@ class Book {
 }
 
 function handleSubmit(e) {
+
     const data = new Book(this.title.value, this.author.value, this.pages.value, this.checkbox.checked);
     myLibrary.push(data);
     console.log(myLibrary);
     formContainer.className = 'form-container hide-form';
     displayLibrary();
     form.reset();
+}
 
-    e.preventDefault();
+function validateForm(e) {
+    console.log(form.querySelectorAll('input'));
+    const inputs = form.querySelectorAll('input');
+    let arr = [];
+    inputs.forEach(input => {
+        arr.push(input.validity.valid);
+        if (input.validity.valid === false) {
+            input.className = 'error';
+            e.preventDefault();
+        } else {
+            input.className = '';
+        }
+    });
+
+    function allGood(input) {
+        return input;
+    };
+
+    if (!arr.every(allGood)) {
+        e.preventDefault();
+    } else {
+        handleSubmit(e);
+    };
 }
 
 
@@ -52,7 +76,7 @@ function addBook() {
 function removeBook() {
     num = this.parentElement.getAttribute('key');
 
-    myLibrary.splice(num);
+    myLibrary.splice(num, 1);
     document.getElementById('display').innerHTML = '';
     displayLibrary();
 }
